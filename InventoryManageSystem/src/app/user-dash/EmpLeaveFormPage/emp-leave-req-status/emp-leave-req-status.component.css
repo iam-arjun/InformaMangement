@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 60%;
+}
+
+.main {
+
+    width: 90vw;
+        height: 100vh;
+    
+        background: #F0F0F0;
+    
+    
+        backdrop-filter: blur(9.3px);
+        -webkit-backdrop-filter: blur(9.3px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    
+    
+    }
+    .Approvedstyle{
+        background-color:green;
+    }
+
+
+ 
+    table th{
+        color: black;
+        font-weight: 600;
+        padding: 0.5rem;
+    
+    
+        font-size: 1rem;
+        background-color: #7e97c6;
+        border: 1px solid white;
+        border-radius: 6px;
+        text-align: center;
+    }
+    table td{
+        text-align: center;
+    }

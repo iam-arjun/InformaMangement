@@ -1,0 +1,180 @@
+<div class="main card">
+    <form [formGroup]="Allemp" (ngSubmit)="Onsubmit()" >
+    <div class="card-body bg-light">
+  
+            <div class="row first">
+                <div class="col">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Employee Name</mat-label>
+                        <input matInput placeholder="Enter full name" formControlName="fullname" required>
+
+
+                    </mat-form-field>
+
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Employee Phone</mat-label>
+                        <input matInput placeholder="Enter phone no" formControlName="phoneno" required>
+
+
+                    </mat-form-field>
+
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Employee Address</mat-label>
+                        <input matInput placeholder="Enter address" formControlName="address" required>
+
+
+                    </mat-form-field>
+
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Employee Guardian Phone</mat-label>
+                        <input matInput placeholder="Enter guardian no" formControlName="guardno" required>
+
+
+                    </mat-form-field>
+
+                </div>
+            </div>
+            <div class="row first">
+                <div class="col">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Employee Personal Email</mat-label>
+                        <input matInput placeholder="Enter personal email" formControlName="email" required>
+
+
+                    </mat-form-field>
+
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Employee Pan No</mat-label>
+                        <input matInput placeholder="Enter pan no" formControlName="panno" required>
+
+
+                    </mat-form-field>
+
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Employee Bank Name</mat-label>
+                        <input matInput placeholder="Enter bank name" formControlName="bankname" required>
+
+
+                    </mat-form-field>
+
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Employee Bank AccountNo</mat-label>
+                        <input matInput placeholder="Enter account no" formControlName="accountno" required>
+
+
+                    </mat-form-field>
+
+                </div>
+            </div>
+            <div class="row first">
+                <div class="col">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Employee Salary</mat-label>
+                        <input matInput placeholder="Enter salary amount" formControlName="salary" required>
+
+
+                    </mat-form-field>
+
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Employee Working Shift</mat-label>
+                        <input matInput placeholder="Enter working shift(in hours)" formControlName="workingshift" required  value="hours">
+
+
+                    </mat-form-field>
+
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="fill" class="example-form-field">
+                        <mat-label>Join date</mat-label>
+                        <input matInput [matDatepicker]="datepicker" formControlName="joindate" placeholder="Enter join date" required>
+                        <mat-hint>MM/DD/YYYY</mat-hint >
+                        <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+                        <mat-datepicker #datepicker>
+                            <mat-datepicker-actions>
+                                <button mat-button matDatepickerCancel>Cancel</button>
+                                <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                            </mat-datepicker-actions>
+                        </mat-datepicker>
+                    </mat-form-field>
+
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="fill" class="example-form-field">
+                        <mat-label>Expiry date</mat-label>
+                        <input matInput [matDatepicker]="datepicker1" formControlName="expirydate" placeholder="Enter expiry date" required>
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="datepicker1"></mat-datepicker-toggle>
+                        <mat-datepicker #datepicker1>
+                            <mat-datepicker-actions>
+                                <button mat-button matDatepickerCancel>Cancel</button>
+                                <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                            </mat-datepicker-actions>
+                        </mat-datepicker>
+                    </mat-form-field>
+
+
+                </div>
+            </div>
+
+            <div class="row mt-3">
+
+                <div class="col-md-3">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Choose Profession</mat-label>
+                        <mat-select formControlName="profession">
+                          <mat-option *ngFor="let item of PROFESSION_ARRAY;index as i"  class="text-dark" [value]="item">
+                           {{item}}
+                         
+                          </mat-option>
+                     
+                        </mat-select>
+                      </mat-form-field>
+                    
+ 
+                </div>
+                <div class="col-md-5 mx-2" style="display: flex;justify-content: space-around;">
+                    <input class="form-control" type="file" (change)="onChange($event)" style="width:300px" formControlName="pp_url">  <button  mat-raised-button color="primary">
+                        <i class="bi bi-upload text-light" (click)="onUpload()" style="font-size:1rem;font-weight:bold"></i>
+                    </button>  
+                </div>
+                <div class="col-md-1">
+
+                </div>
+
+                <div class="col-md-1 ">
+                    <button mat-stroked-button color="primary" type="submit" >SAVE</button>
+ 
+                </div>
+                <div class="col-md-1">
+                    <button mat-stroked-button  color="warn" (click)="hideModal()">CLOSE</button>
+
+                </div>
+            
+            </div>
+
+
+
+
+
+
+
+
+
+    </div>
+</form>
+
+</div>

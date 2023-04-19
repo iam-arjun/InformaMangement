@@ -1,0 +1,124 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 60%;
+}
+
+.main {
+
+    width: 90vw;
+    height: 100vh;
+
+    background: #F0F0F0;
+
+
+    backdrop-filter: blur(9.3px);
+    -webkit-backdrop-filter: blur(9.3px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+
+}
+
+
+.profile_sub_header {
+    margin-top:1rem;
+
+    color: white;
+    font-weight: 500;
+    background-color: #FFB100;
+    padding: 0.5rem;
+    border: 1px solid white;
+    border-radius: 10px;
+    
+
+}
+
+.profession {
+    width: 7rem;
+    height: 3rem;
+    background-color: #ffffff;
+
+
+    display: grid;
+    place-items: center;
+    border-left: 5px solid white;
+
+
+}
+
+.profession h3 {
+    font-weight: 600;
+    font-size: 1.3rem;
+    color:#7e97c6;
+    text-shadow: 2px 1px rgb(0, 0, 0);
+    letter-spacing: 4px;
+    text-align: start;
+}
+
+.profile_header {
+    border-right: 3px solid rgb(0, 0, 0);
+    border-bottom: 3px solid white;
+    border-top-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+   line-height: 3rem;
+}
+
+.loginUser h3 {
+    font-size: 1.2rem;
+    color: black;
+    font-weight: 800;
+
+
+
+}
+
+mat-input::placeholder {
+    font-size: 0.8rem;
+    color: black;
+    font-weight: 900;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body {
+    background-color: #E6EAF5;
+    font-family: 'Roboto', sans-serif;
+}
+
+.card {
+    height: 100%;
+    border: none;
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+h6 {
+    color: #E5F3FF;
+}
+
+.text {
+    color: #B2C9FF;
+}
+
+.flex_div {
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    padding: 0.2rem;
+}
+
+.content h6 {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.login_input input ::placeholder {
+    align-items: center;
+    text-align: center;
+    color: black;
+    background-color: white;
+}

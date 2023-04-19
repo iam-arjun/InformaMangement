@@ -1,0 +1,135 @@
+<section class="leave_form">
+    <div class="main">
+        <div class="header mb-5 mt-3">
+            <h1 class="text-bold">Fill up the form for break </h1>
+        </div>
+        <form (ngSubmit)="Leave_form_submit()" [formGroup]="Leaveform">
+
+            <div class="row">
+                <div class="col-md-3">
+
+                    <mat-form-field >
+                        <mat-label>Your Name</mat-label>
+                        <input matInput placeholder="Enter your name" formControlName="name" required>
+
+
+                    </mat-form-field>
+
+
+                </div>
+                <div class="col-md-3">
+
+                    <mat-form-field >
+                        <mat-label>Your Designation</mat-label>
+                        <input matInput placeholder="Enter your designation" formControlName="profession" required>
+
+
+                    </mat-form-field>
+
+
+                </div>
+                <div class="col-md-3">
+
+                    <mat-form-field >
+                        <mat-label>Your Phone</mat-label>
+                        <input matInput placeholder="Enter guardian phone no" formControlName="phone" required>
+
+
+                    </mat-form-field>
+
+
+                </div>
+
+            </div>
+            <div class="row mt-1">
+
+
+                <div class="col-md-7">
+                    <span> Choose Break Period</span> &nbsp;&nbsp;
+                    <mat-radio-group aria-label="Select an option" formControlName="BreakPeriod" required> &nbsp;
+                        <mat-radio-button value="Full Day">Full Day</mat-radio-button> &nbsp; &nbsp;
+                        <mat-radio-button value="Half Day">Half Day</mat-radio-button> &nbsp; &nbsp;
+                        <mat-radio-button value="Hourly leave">Hourly Leave</mat-radio-button>
+                    </mat-radio-group>
+
+                </div>
+                <div class="col-md-3">
+                    <span>Date Requested(B.S)</span>
+                    <span>
+                        <input matInput [matDatepicker]="datepicker" formControlName="DateRequested" required>
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+                        <mat-datepicker #datepicker>
+                            <mat-datepicker-actions>
+                                <button mat-button matDatepickerCancel>Cancel</button>
+                                <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                            </mat-datepicker-actions>
+                        </mat-datepicker>
+
+                    </span>
+
+                </div>
+            </div>
+            <div class="row mt-1">
+                <div class="col-md-5">
+                    <span>Leave Start Date/Time</span>
+                    <input matInput [matDatepicker]="datepicker2" formControlName="LeaveStart" required>
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="datepicker2"></mat-datepicker-toggle>
+                    <mat-datepicker #datepicker2>
+                        <mat-datepicker-actions>
+                            <button mat-button matDatepickerCancel>Cancel</button>
+                            <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                        </mat-datepicker-actions>
+                    </mat-datepicker>
+
+
+                </div>
+                <div class="col-md-5">
+                    <span>Leave End Date/Time</span>
+                    <input matInput [matDatepicker]="datepicker3" formControlName="LeaveEnd" required>
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="datepicker3"></mat-datepicker-toggle>
+                    <mat-datepicker #datepicker3>
+                        <mat-datepicker-actions>
+                            <button mat-button matDatepickerCancel>Cancel</button>
+                            <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                        </mat-datepicker-actions>
+                    </mat-datepicker>
+
+
+                </div>
+                <div class="col-md-2">
+                    <span>Employee's Signature</span>
+                    <input matInput style="background-color:rgb(172, 172, 176)" formControlName="EmpSign" required>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <span>Reason for Leave</span>
+
+                <mat-form-field class="example-full-width">
+
+                    <textarea matInput placeholder="My reason for leave....." formControlName="ReasonForLeave"
+                        required></textarea>
+                </mat-form-field>
+
+                <span>Note:</span><i>(Reason should be properly explained if your are taking leave in office time ,
+                    personal/private reason won't be accepted)</i>
+
+            </div>
+            <div class="row submission mt-4">
+                <div class="col-md-4">
+                    <span> <button mat-button style="border:2px solid white;background-color: #FFB100"
+                            (click)="HIDE_LEAVE_FORM()" type="submit">Submit</button> </span>
+
+                </div>
+
+            </div>
+
+        </form>
+
+
+
+    </div>
+</section>

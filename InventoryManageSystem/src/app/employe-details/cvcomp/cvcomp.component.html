@@ -1,0 +1,83 @@
+<div class="CV_DETAILS">
+    <div class="main card" style="width:40vw;height:90vh;background-color:white;border-radius:0.3rem;">
+
+        <div class="card-header">
+            <h3 style="font-size:1.4rem;color:darkolivegreen;font-weight: 500;">Employee Personal Details</h3>
+        </div>
+
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <b> Employee FullName:</b>
+                    <br> <br>
+                 <b>   Email ID :</b>
+
+                    <br> <br>
+                    <b> Permanent Address:</b>
+                    <br> <br>
+                    <b> Guardian PhoneNo: </b>
+                    <br> <br>
+                    <b> Employee BankName: </b>
+                    <br> <br>
+                    <b> Bank Account No :</b>
+                    <br> <br>
+                    <b> Employee PAN No :</b>
+
+                    <br> <br>
+                    <b> Employee Salary :</b>
+
+                    <br> <br>
+                <b>    Employee JoinDate :</b>
+                    <br> <br>
+                <b>    Employee LeaveDate :</b>
+                    <br> <br>
+
+
+
+                </div>
+
+                <div class="col-md-5">
+                    {{empname}}
+                    <br> <br>
+                    {{empemail}}
+
+                    <br> <br>
+                    {{empaddress}}
+                    <br> <br>
+                    {{empGuard}}
+                    <br> <br>
+                    {{empbankname}}
+                    <br> <br>
+                    {{empaccountNo}}
+                    <br> <br>
+                    {{emppan}}
+                    <br> <br>
+                    {{empsalary}}
+                    <br> <br>
+                    {{empjoin | date : 'mediumDate'}}
+                    <br> <br>
+                    {{empexpiry | date : 'mediumDate'}}
+
+                </div>
+
+                <div class="col">
+                    <div class="EMP_photo card "
+                        style="width:4rem;height:4rem; display:flex;justify-content: center ; align-items: center;">
+
+                        <img src={{PPURL}} class="imgPlaceholder" width="60px" height="60px" style="object-fit: cover;">
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="closeCV">
+                <button mat-button (click)="closeCV()" color="warn">Close CV</button>
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>

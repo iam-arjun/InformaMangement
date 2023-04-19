@@ -1,0 +1,54 @@
+.main {
+
+
+
+    margin: 0 auto;
+    width: 90vw;
+    height: 100vh;
+    /* From https://css.glass */
+    background: rgb(255, 255, 255);
+
+
+    backdrop-filter: blur(9.3px);
+    -webkit-backdrop-filter: blur(9.3px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* background-color:#5472ab ; */
+
+
+
+
+}
+
+table {
+    border-collapse: collapse;
+    width: auto;
+    text-align: center;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    
+}
+td input{
+    width:30px;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+/* th{
+   background-color: #19376D;
+    font-weight: 600;
+
+    padding-bottom: 1rem;
+
+    font-size: 1.3rem;
+    color:white;
+}
+td{
+    color:black;
+} */
+
+  

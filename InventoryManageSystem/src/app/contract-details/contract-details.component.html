@@ -1,0 +1,60 @@
+<section class="CONTRACT_DETAILS">
+    <div class="main">
+        <div class="searchBox row mx-2 my-2">
+            <div class="col-md-10">
+                <form class="my-3">
+                    <div class="input-group">
+                        <input type="search" class="form-control px-3 py-3 rounded " [(ngModel)]="namesearch"
+                            placeholder="Search" [ngModelOptions]="{standalone: true}" aria-label="Search"
+                            aria-describedby="search-addon" style="margin-top:2rem;background-color: transparent;color:black"  name="search"/>
+        
+                    </div>
+                </form>
+            </div>
+        
+
+        </div>
+
+        <div class="row mx-2" >
+            <div class="col-md-10 py-4 px-3" style="background-color: white;border:1px solid white;border-radius:5px;">
+                <table class="table ">
+                    <thead>
+                        <tr>
+                            <th scope="col">Sno</th>
+                            <th scope="col">Full Name</th>
+                            <th scope="col">Join Date</th>
+                            <th scope="col">Expiry Date</th>
+                            <th scope="col">Remaining Time</th>
+                     
+                            
+                            <th scope="col">Salary</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of Contract_Details | filterpipe3:namesearch;index as i">
+                            <th scope="row">{{i+1}}</th>
+                            <td>{{item.fullname}}</td>
+                            <td>{{item.joindate | date : 'shortDate'}}</td>
+                            <td>{{item.expirydate | date : 'shortDate'}}</td>
+                            <td>{{Days[i]}} Days</td>
+                     
+                          
+                          
+                            <td>{{item.salary}}</td>
+                          
+                          
+                        </tr>
+        
+        
+                    </tbody>
+                </table>
+        
+
+            </div>
+        </div>
+          
+    
+      
+
+    </div>
+</section>

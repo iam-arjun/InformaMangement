@@ -1,0 +1,149 @@
+<section class="MY_PROFILE" style="width:100vw;height: 100vh; ">
+    <div class="main">
+        <div class="row  " style=" width:100%;height: 100%;  ">
+
+            <div class="col-md-8 card px-3 py-3 " style=" background: rgba(255, 255, 255);outline:none; ">
+                <div class="row">
+                    <div class="col-md-5 " >
+
+                        <div class="profile_header card-body  ">
+                            <h1 style="font-size:1.5rem;font-weight: 700; letter-spacing: 4px;margin:0; ">{{Emp_name}}</h1>
+                            <div> <b class="profile_sub_header my-2"><span>{{Emp_email}}</span></b> </div>
+
+
+                            <div class="profession my-2">
+                                <h3>
+                                    {{Emp_proff}}
+                                </h3>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6 mx-3 ">
+
+                        <div class="ATTENDANCE_BTN px-4" style="background-color:white ;width:10rem;height: 5rem;"
+                            *ngIf="SHOW_ATTEND">
+                            <button type="button" (click)="SHOW_ATTENDANCE()" class="show_attend"
+                                style="font-size:1.1rem;border: none;width:100%;height: 100%;font-weight: 700;background-color: transparent;">Attendance
+                                Please <i class="bi bi-forward" style="color:rgb(27, 27, 141)"></i></button>
+
+                        </div>
+
+                        <div class="USER_LOGIN_LOGOUT" *ngIf="!SHOW_ATTEND">
+
+                            <div class="row loginUser">
+                                <div class="col-md-6"
+                                    style="display:flex;flex-direction:column;justify-content: space-around;align-items: center;">
+                                    <div class="header">
+                                        <h3 #loginHeader>Login</h3>
+                                    </div>
+
+                                    <div class="login_input">
+
+                                        <mat-form-field class="example-full-width">
+
+                                            <input matInput placeholder="SAY IAM IN!" #logIninput>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="in-out">
+                                        <button mat-flat-button color="primary" [disabled]="  disableLogin"
+                                            (click)="loginTime()"><i class="bi bi-arrow-left"></i> &nbsp;&nbsp; IN
+                                        </button>
+                                    </div>
+
+
+                                </div>
+                                <div class="col-md-6"
+                                    style="display:flex;flex-direction:column;justify-content: space-around;align-items: center;">
+                                    <div class="header">
+                                        <h3>Log Out</h3>
+                                    </div>
+                                    <div class="login_input">
+
+                                        <mat-form-field class="example-full-width">
+
+                                            <input matInput placeholder="SAY IAM OUT!" #logoutinput>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="in-out">
+                                        <button mat-flat-button color="warn" [disabled]="disableLogout"
+                                            (click)="logoutTime(Emp_name)">OUT &nbsp;&nbsp;<i
+                                                class="bi bi-arrow-right"></i>
+                                        </button>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class=" col-md-3">
+                <div class="  p-3">
+                    <app-current-time></app-current-time>
+                    <div class="media">
+                        <div class="row" style="height:50%">
+                            <div class="col-md-11">
+                                <!-- <div class="header">
+                                    <h3 style="font-size:1.2rem;font-weight: 700;">
+                                        Attendance Credentials
+                                    </h3>
+
+                                </div> -->
+
+
+
+                                <div class="body " *ngIf="USER_LOGIN_TIME">
+
+                                    <div class="card px-2 py-2 ">
+
+                                        <div class="card-body">
+                                            <div class="loginPopup">
+                                                <span style="font-weight:700;color:blue">
+                                                    Your have successfully {{USER_LOGIN_TIME?'logged in':'logged out'}}
+                                                    in at {{USER_LOGIN_TIME }}
+                                                    <i class="bi bi-emoji-laughing"></i>
+                                                </span>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- <div class="row" style="height: 50%;">
+                            <div class="col-10">
+                                <div class="header">
+                                    <h3>
+                                        LOGOUT CREDENTIALS
+                                    </h3>
+
+                                </div>
+                            </div>
+
+                        </div> -->
+
+                    </div>
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+</section>

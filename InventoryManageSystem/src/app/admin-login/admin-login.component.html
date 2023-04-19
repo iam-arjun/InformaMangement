@@ -1,0 +1,173 @@
+<section class="APP_HOME_PAGE  px-3" style="background-color:#19376D ;height:100vh;width:100vw; ">
+  <div class="main">
+    <span class="Logo mb-5   " style="width: 11rem;height:11rem">
+      <img src="../../assets/img/Innovate.jpg" alt="Logo"
+        style="border:2px solid white;border-radius: 20rem; width: 3rem;height:3rem">
+      <h5 class="mt-1" style="color:white;font-weight:700;font-family:Arial, Helvetica, sans-serif">INNOVATE
+        TECH</h5>
+
+    </span>
+    <div class="row">
+
+      <div class="col">
+        <div class="alert alert-danger" role="alert" *ngIf="loginErr">
+         An error occured!! {{loginErr}}
+        </div>
+
+        <section class="ADMIN_PAGE">
+          <section class="vh-70 vw-50  mt-1">
+
+
+            <div class="container   h-50">
+              <div class="row d-flex justify-content-center align-items-center ">
+                <div class="col-8 col-md-8 col-lg-6 col-xl-5" style="    width: 27vw;">
+                  <div class="card   text-white" style="border-radius: 1rem; height: 75vh;">
+                    <div class="card-body text-center">
+                  
+                      <div class="mb-md-2 mt-md-4 pb-5" style="color:black">
+
+                        <h2 class="fw-bold mb-2 text-uppercase text-dark " style="font-size:1.6rem">{{show_signUp?"Sign Up ":"Login"}}
+                        </h2>
+                        <br>
+                        <p class="text-50 mb-5  " style="font-weight: 450;  color:#FFB100;" >{{show_signUp?"Please create  your new account ":"Login with your account "}}
+                        </p>
+                        <form  [formGroup]="LoginUser" (ngSubmit)="Login()" >
+
+
+
+                          <div class="form-outline form-white mb-4">
+                            <mat-form-field class="example-full-width" appearance="fill">
+
+                              <input type="email" matInput placeholder="Type useremail" formControlName="email" >
+                            </mat-form-field>
+
+                          </div>
+
+                          <div class="form-outline form-white mb-4">
+                            <mat-form-field class="example-full-width" appearance="fill">
+
+                              <input matInput placeholder="Type password" formControlName="password"   type="password"> 
+                            </mat-form-field>
+
+                          </div>
+                         
+
+
+
+                          <button class="btn btn-outline-light btn-sm px-5" type="submit"
+                            style="background-color: #FFB100;" (click)="Login()"><a
+                              style="color:black;text-decoration: none;"> {{show_signUp?"Create Account":"Login"}}
+                            </a></button>
+
+                          <div class="mt-4" >{{show_signUp?"Already have account?":"Sign Up First?"}} <strong><a (click)="add_signup_field()"
+                                style="text-decoration: none;color:#19376D;cursor: pointer;">{{show_signUp?"Sign In":"Sign Up"}}</a></strong></div>
+
+
+                        </form>
+
+                      </div>
+
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+          </section>
+        </section>
+
+      </div>
+
+      <div class="col "
+        style="margin-top:1rem; display: flex; flex-direction: column; justify-content:space-around; height: 50vh; align-items: start;">
+        <div class="Logo" style="display: flex;justify-content: center;align-items: center;">
+          <!-- <div class="LOGO " >
+                      <span class="Logo pb-5 " style="width: 11rem;height:11rem">
+                          <img src="../../assets/img/Innovate.jpg" alt="Logo"
+                              style="border:2px solid white;border-radius: 20rem; width: 6rem;height:6rem">
+
+                      </span>
+                  </div> -->
+
+          <div class="Name">
+            <h5
+              style="color:white;font-weight:700;font-family:Arial, Helvetica, sans-serif;font-size: 4rem; line-height: 4rem;">
+              INNOVATE TEX
+              TECH</h5>
+          </div>
+
+        </div>
+
+        <div class="Slogan mx-3">
+          <h3
+            style="color:white;font-size:2.2rem;font-weight:700;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+            Better Solutions </h3>
+          <br><br>
+
+          <span style="color:#FFB100;font-size:1rem;background-color:white;padding:1rem;">For Your
+            Business</span>
+        </div>
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <section class="mainTheme">
+  <div class="main row" style="width:100vw;height:100vh;border:2px solid black;
+  background-color: #7149C6;margin:0 auto;">
+      <div class="col-md-2 leftHome" style="border-radius: 5px;">
+
+          <div class="DisplayUser" style="width:100%;display:flex;flex-direction: column;
+   justify-content: start; background-color:darkgoldenrod;color:white;padding:1rem">
+              <h3 class="text-dark text-bold">Company Name</h3>
+              <h5 class="text-dark text-bold">User Name</h5>
+          </div>
+          <ul class="sidebar mt-3">
+              <li>
+                  <a routerLink="/">DASHBOARD</a>
+              </li>
+              <li>
+                  <a routerLink="/employee" (click)="showEmploy()">Employee</a>
+              </li>
+              <li>
+                  <a routerLink="/transaction">TRANSACTION</a>
+              </li>
+              <li>
+                  <a routerLink="/employdetail" (click)="showEmployDetails()">Employee Details </a>
+              </li>
+              <li>
+                  <a routerLink="/emplogin">Employee Login </a>
+              </li>
+          </ul>
+
+      </div>
+      <div class="col-md-9 " >
+          <app-parties-info *ngIf="showParty" ></app-parties-info>
+      <app-employe-details *ngIf="showEmployee"></app-employe-details>
+
+
+      </div>
+      
+
+
+  </div>
+</section> -->

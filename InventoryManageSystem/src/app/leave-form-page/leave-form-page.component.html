@@ -1,0 +1,75 @@
+<section class="LEAVE_FORM_PAGE" style=" width:100vw;height:90vh">
+  <div class="main">
+    <div class="card1 mx-3">
+   
+      <div class="card-header1">
+        <form>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="input-group">
+                <input type="search" class="form-control py-2 rounded " [(ngModel)]="DateSearch"
+                  [ngModelOptions]="{standalone: true}" placeholder="From yy-mm-dd " aria-label="Search"
+                  aria-describedby="search-addon" style="margin-top:2rem;background-color: transparent;color:black;" />
+
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="input-group">
+                <input type="search" class="form-control py-2 rounded " [(ngModel)]="DateSearch2"
+                  [ngModelOptions]="{standalone: true}" placeholder="To yy-mm-dd" aria-label="Search"
+                  aria-describedby="search-addon" style="margin-top:2rem;background-color: transparent;color:black;"   />
+    
+              </div>
+
+            </div>
+          </div>
+
+
+
+         
+        </form>
+        <div class="leaveformpage">
+        <table class="table mt-3 ">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">Designation</th>
+     
+
+              <th scope="col">Break Period</th>
+              <th scope="col">Leave Start Date</th>
+              <th scope="col">Leave End Date</th>
+
+              <th scope="col">Actions to Carry</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of leave_form_arr | filterpipe2:DateSearch:DateSearch2 ;index as i">
+              <th scope="row">{{prefixId}}{{i}}</th>
+              <td>{{item.name}}</td>
+              <td>{{item.profession}}</td>
+           
+              <td>{{item.breakperiod}}</td>
+              <td>{{item.leavestart | slice:0:10}}</td>
+              <td>{{item.leaveend | slice:0:10}} </td>
+
+              <td style="padding-top:1rem"><span class="accept bg-primary text-light" (click)="acceptReq(item.name,item.breakperiod,item.leavestart,item.leaveend)"><i
+                    class="bi bi-check"></i></span>
+
+                <span class="reject  bg-danger text-light " (click)="rejectReq(item.name,item.breakperiod,item.leavestart,item.leaveend)"><i class="bi bi-x"></i></span>
+
+                <span class="hold  bg-warning text-light" (click)="holdReq(item.name,item.breakperiod,item.leavestart,item.leaveend)"><i class="bi bi-pause"></i></span>
+              </td>
+
+            </tr>
+          </tbody>
+        </table>
+        </div>
+
+      </div>
+    </div>
+
+
+  </div>
+</section>

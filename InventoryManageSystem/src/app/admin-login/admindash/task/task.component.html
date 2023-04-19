@@ -1,0 +1,76 @@
+<script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+<section class="TASK">
+    <div class="main mx-4">
+        <div class="input-group mb-4 mt-3 row">
+            <div class="col-md-8">
+                <input type="search" class="form-control  py-3 rounded " [(ngModel)]="nameSearch" placeholder="Search"
+                    [ngModelOptions]="{standalone: true}" aria-label="Search" aria-describedby="search-addon"
+                    style="margin-top:2rem;background-color: transparent;width: 70vw;color:black" name="search" />
+            </div>
+
+
+        </div>
+        <div
+            style="overflow-y: scroll;overflow-x: scroll; width:94%;height: 90%; background-color: white;padding:0.2rem;border:1px solid white;border-radius: 10px;">
+
+
+
+
+            <table class="table " style="width:100%;height: 100%">
+                <thead>
+                    <tr>
+                        <th scope="col">Emp ID</th>
+                        <th scope="col">Emp Name</th>
+                        <th scope="col">CV Upload</th>
+                        <th scope="col">Full Amount</th>
+                        <th scope="col">First Photo</th>
+                        <th scope="col">Advance</th>
+                        <th scope="col">Second Photo</th>
+                        <th scope="col">Final</th>
+                        <th scope="col">Download CV</th>
+                        <th scope="col">Remark</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of TASK_EMP_ARRAY |filterpipe4:nameSearch;index as i">
+                        <th>{{prefixId}}{{i}}</th>
+                        <td>{{item.name}}</td>
+                        <td>
+                            <div style="display: flex;justify-content: space-around;">
+                                <input class="form-control" type="file" (change)="onChange($event)" style="width:300px"
+                                >
+                                <button class="" mat-raised-button color="primary">
+                                    <i class="bi bi-upload text-light" (click)="onUpload()"
+                                        style="font-size:1rem;font-weight:bold"></i>
+                                </button>
+                            </div>
+
+                            <!-- <button (click)="onUpload()" class="btn btn-success">
+                                Upload
+                            </button> -->
+
+                        </td>
+                        <td>1000</td>
+
+                        <td> PHOTO1</td>
+                        <td>
+                            500
+                        </td>
+                        <td>PHOTO2</td>
+                        <td>5000</td>
+                        <td><button mat-raised-button color="primary"  class="px-2 py-1" >
+                                <a [href]="fileUrl" download="Download.txt"
+                                    style="color:white;text-decoration:none">Download &nbsp;</a><i
+                                    class="bi bi-download"></i></button></td>
+                        <td>Remarks</td>
+                    </tr>
+
+
+                </tbody>
+            </table>
+            <br><br><br>
+
+
+        </div>
+    </div>
+</section>

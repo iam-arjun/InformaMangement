@@ -1,0 +1,10 @@
+matInput::placeholder{
+    font-size: 0.9rem;
+    color:black;
+
+  
+   
+}
+input::placeholder{
+    text-align: center;
+}

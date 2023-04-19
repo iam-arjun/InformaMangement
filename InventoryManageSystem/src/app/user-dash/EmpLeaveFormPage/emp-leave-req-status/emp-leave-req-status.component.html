@@ -1,0 +1,62 @@
+<section class="EMP_LEAVE_REQ_PAGE " style="width:100vw;height: 100vh;">
+    <div class="main  container">
+        <div class="ADD_LEAVE container">
+            <mat-card class="my-2 mx-2" style="width:90% ;height:97vh;background-color:white;">
+                <mat-card-header class="py-3">
+                    <div class="leave_header" style="display: flex;justify-content:space-evenly;width:100%;">
+                        <div>
+                            <div class="mat-card-title text-bold" style="color: black;font-size:2rem">Take Your Leave
+                            </div>
+                        </div>
+                        <div>
+                            <button mat-flat-button color="primary" style="color:rgb(255, 255, 255);" class="px-2 "
+                                (click)="show_leave_modal()"> Send
+                                Request &nbsp; <i
+                                class="bi bi-arrow-right"></i></button>
+
+                        </div>
+
+                    </div>
+
+
+
+
+                </mat-card-header>
+
+
+                <mat-card-content class="mt-5 mx-4">
+
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Sno</th>
+                                <th scope="col">Break Interval</th>
+                                <th scope="col">Leave From </th>
+                                <th scope="col">Leave To</th>
+                                <th scope="col">Remarks(from Admin)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of leaveArray ;index as i ">
+                                <th scope="row">{{i+1}}</th>
+                                <td>{{item.breakperiod}}</td>
+                                <td>{{item.leavestart| date:'fullDate'}}
+
+                                </td>
+                                <td>{{item.leaveend | date:'fullDate'}}</td>
+                                <td> <span
+                                        [ngStyle]="{'background-color': (item.status=='Approved') ? 'green' : 'red'}" style="padding:0.5rem;color:white;font-weight:700;border:2px solid white;border-radius:7px;"> {{item.status}}</span> &nbsp;&nbsp; <i class="bi bi-x" style="color:rgb(174, 0, 0);font-size:1.5rem;font-weight: 700; cursor:pointer;
+                                        " (click)="delleavereq(i,item.leavestart)"></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </mat-card-content>
+
+
+            </mat-card>
+
+
+        </div>
+    </div>
+</section>
