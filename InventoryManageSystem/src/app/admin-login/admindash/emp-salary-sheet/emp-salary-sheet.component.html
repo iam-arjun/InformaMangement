@@ -1,0 +1,100 @@
+<section class="EMP_SALARY_SHEET">
+    <div class="main">
+
+        <div class="searchBox row mx-2 my-1">
+            <div class="col-md-10">
+                <form class="my-3">
+                    <div class="alert alert-success p-3" role="alert" *ngIf="sal_save_alert">
+                        <b>Data has been saved!</b>
+                    </div>
+                    <div class="alert alert-warning p-3" role="alert" *ngIf="Invalid_alert">
+                        <b>Please enter valid credentials!</b>
+                    </div>
+                    <div class="input-group">
+                        <input type="search" class="form-control px-3 py-3 rounded " [(ngModel)]="datesearch"
+                            placeholder="Search" [ngModelOptions]="{standalone: true}" aria-label="Search"
+                            aria-describedby="search-addon"
+                            style="margin-top:2rem;background-color: transparent;color:black" name="search" />
+
+                    </div>
+                </form>
+            </div>
+
+
+        </div>
+
+        <div class="row mx-2">
+            <div class="col-md-11 py-2 px-2"
+                style="background-color: white;border:1px solid white;border-radius:5px; overflow-x: scroll;overflow-y: scroll;height: 70vh;">
+
+
+                <h4 style="text-align: center;font-size: 1.2rem;font-weight: 900; color:#FFB100 ; ">
+                    {{currentDate|date:'mediumDate'}}</h4>
+
+                <table class="table ">
+                    <thead>
+                        <tr>
+
+                            <th scope="col">Date</th>
+
+                            <th scope="col">Full Name</th>
+                            <th scope="col">Working Days(for a month)</th>
+                            <th scope="col">Salary</th>
+                            <th scope="col">Basic Salary</th>
+                            <th scope="col">Allowance</th>
+                            <th scope="col">Previous Dues</th>
+                            <th scope="col">Bonus</th>
+                            <th scope="col">Total Addition</th>
+                            <th scope="col">Tax</th>
+                            <th scope="col">Advance</th>
+                            <th scope="col">Net Salary</th>
+                            <th scope="col">Final Payment</th>
+
+                            <th scope="col">Remarks</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of AllEmpSalarySheet  |filterpipe5:datesearch ;index as i ">
+
+                            <td> {{currentDate | date:'fullDate'}}</td>
+                            <td #username> {{item.fullname}}</td>
+                            <td #workdays (click)="show_workdays(i,item.fullname)" style="background-color: black;color:white;cursor:pointer;border:2px solid white;border-radius: 10px;">{{item.workingdays}}</td>
+                            <td #sal>{{item.salary}}</td>
+                            <td #basic> {{item.salary*0.6}}</td>
+                            <td #allowance>{{item.salary*0.4}}</td>
+                            <td  > <input type="number" placeholder="000" #previousDues></td>
+
+                            <td ><input type="number" placeholder="000"   #bonus ></td>
+                            <td #totalAddition> {{(item.salary/30)*item.workingdays}}</td>
+                            <td #tax> {{((item.salary/30)*item.workingdays)*0.01 }}</td>
+                            <td ><input type="number" placeholder="000" #advance > </td>
+                            <td #net> {{((item.salary/30)*item.workingdays)-((item.salary/30)*item.workingdays)*0.1 }}</td>
+                         
+                            <td style="background-color: black;color:white;cursor:pointer;border:2px solid white;border-radius: 10px;" #final_sal> {{item.Finalpay}} </td>
+                            <td style="display:flex ;justify-content: space-around;"><span class="mx-2"><button class=""
+                                        mat-raised-button type="button" color="primary"
+                                        (click)="saveData(previousDues.value,bonus.value,advance.value,(item.salary/30)*item.workingdays,i)">Save</button></span>
+                                <span><button mat-raised-button color="warn"
+                                        (click)="clearSal(i)">Clear</button></span>
+
+                            </td>
+
+
+                        </tr>
+
+
+
+
+                    </tbody>
+                </table>
+
+
+            </div>
+        </div>
+
+
+
+
+    </div>
+</section>

@@ -2,11 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { BehaviorSubject, Subject, catchError, tap } from 'rxjs';
-import { EmployeModel } from '../parties-info/ClientModel';
-import { OfficeModel } from '../parties-info/OfficeEmpModel';
+
 import { LeaveModel } from '../user-dash/leave-form/LeaveModel';
-import { ChatUserModel } from '../chat-options/loginpopup/ChatLoginModel';
+
 import { User } from '../admin-login/User.model';
+import { EmployeModel } from '../admin-login/admindash/parties-info/ClientModel';
+import { OfficeModel } from '../admin-login/admindash/parties-info/OfficeEmpModel';
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +33,9 @@ export class MyserviceService {
   apikey = "AIzaSyAUUEKTPqFNokxvHmpG6sDxCNGfHmnXUEE"
   Signupurl = "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key="
   Signinurl = "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key="
+  LoginTimeUrl = "http://localhost:8000/Allemp/userloginTime"
+  SalarySheetUrl = "http://localhost:8000/Allemp/userSalarydetails"
+  showSignup = new BehaviorSubject(false)
 
 
   // CV DETAILS .................................................................
@@ -48,6 +52,7 @@ export class MyserviceService {
   Ejoin = new BehaviorSubject("");
   Eleave = new BehaviorSubject("");
   EppUrl = new BehaviorSubject("");
+  TOTAL_WORKING_DAYS = new BehaviorSubject('')
 
   //......................................................................................
 
@@ -92,6 +97,7 @@ export class MyserviceService {
 
   name = new BehaviorSubject("");
   show_modal = new BehaviorSubject(false);
+  SALARY_SPECIFIC_USER  = new BehaviorSubject('')
 
   constructor(private http: HttpClient) { }
 
@@ -148,12 +154,7 @@ export class MyserviceService {
   }
 
 
-  chatlogin(chatuser: ChatUserModel) {
-    return this.http.post(this.emp_chat_url, chatuser)
-  }
-  chatuser() {
-    return this.http.get(this.emp_chat_url);
-  }
+ 
 
 
 
@@ -229,6 +230,40 @@ export class MyserviceService {
 
 
 
+
+  }
+
+
+  empLoginTime(loginObj:any){
+   return this.http.post(this.LoginTimeUrl,loginObj);
+
+  }
+  getEmpLoginTimeDetails(){
+    return this.http.get(this.LoginTimeUrl);
+  }
+  saveEmpSalary(SalaryObj:any){
+    return this.http.post(this.SalarySheetUrl,SalaryObj)
+
+  }
+  getEmpSalary(){
+    return this.http.get(this.SalarySheetUrl)
+  }
+
+  
+  UpdateOfficeSal(emp:any) {
+    console.log('here')
+    console.log(emp._id);
+    return this.http.put(`${this.SalarySheetUrl}/${emp._id}`, emp)
+  }
+  DeleteOfficesal(id) {
+    return this.http.delete(`${this.SalarySheetUrl}/${id}`)
+  }
+
+
+  ForgotPassword(data){
+    return this.http.post(`https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=${this.apikey}`,{
+      requestType:'PASSWORD_RESET',email:data.email
+    })
 
   }
 

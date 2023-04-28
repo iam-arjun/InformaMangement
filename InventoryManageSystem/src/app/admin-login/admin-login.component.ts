@@ -6,6 +6,8 @@ import "../../assets/smtp.js"
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
+import { MatDialog } from '@angular/material/dialog'
+import { ForgotPassComponent } from './forgot-pass/forgot-pass.component';
 
 
 @Component({
@@ -22,7 +24,7 @@ export class AdminLoginComponent implements OnInit, AfterViewInit {
   AdminId = "r"
   AdminPass = "r"
   show_confirm_pass: boolean = false;
-  show_signUp: boolean = false;
+  show_signUp: boolean;
   LoginBtn = "Login"
   LoginUser: FormGroup;
   tempArra: any[];
@@ -31,17 +33,20 @@ export class AdminLoginComponent implements OnInit, AfterViewInit {
 
   loginErr: any;
   tempuserarray: any = []
+  forgot_pass: boolean = false;
 
-  constructor(private _service: MyserviceService, private fb: FormBuilder, private _eservice: EmailserviceService, private http: HttpClient, private router: Router) { }
+  constructor(private _service: MyserviceService, private fb: FormBuilder, private _eservice: EmailserviceService, private http: HttpClient, private router: Router, private dialogRef: MatDialog) { }
   ngAfterViewInit(): void {
     this.errMsgs = this._service.errMsg;
-
 
   }
 
   ngOnInit(): void {
+    this._service.showSignup.subscribe(res => {
+      this.show_signUp = res
+    })
 
-    let temp = JSON.parse(sessionStorage.getItem('ADMINLOGIN-0'));
+    let temp = JSON.parse(sessionStorage.getItem('ADMINLOGIN-01'));
     if (temp) {
       this._service.showAdmin.next(true)
       this._service.showUser.next(false)
@@ -113,6 +118,7 @@ export class AdminLoginComponent implements OnInit, AfterViewInit {
             let temp_id = this.Office_emp[i].empid;
             let temp_proff = this.Office_emp[i].profession;
             let temp_worktime = this.Office_emp[i].worktime
+            let temp_ppurl = this.Office_emp[i].PPURL;
             console.log(temp_worktime)
 
             if (temp_email == email && temp_pass == password) {
@@ -128,6 +134,8 @@ export class AdminLoginComponent implements OnInit, AfterViewInit {
               sessionStorage.setItem('userid', temp_id);
               sessionStorage.setItem('useremail', temp_email);
               sessionStorage.setItem('userproff', temp_proff)
+              sessionStorage.setItem('WORKTIME', temp_worktime)
+              sessionStorage.setItem('PPURL', String(temp_ppurl))
 
               this.tempuserarray.push(this.LoginUser.value)
 
@@ -146,7 +154,10 @@ export class AdminLoginComponent implements OnInit, AfterViewInit {
                 this._service.showLogin.next(false)
                 this._service.showAdmin.next(true)
                 this._service.showUser.next(false)
-                sessionStorage.setItem('ADMINLOGIN-0',JSON.stringify(this.LoginUser.value))
+                sessionStorage.setItem('ADMINLOGIN-01', JSON.stringify(this.LoginUser.value))
+                let SlicedEmail = email.slice(0, email.indexOf('@'))
+                sessionStorage.setItem('ADMIN_NAME', SlicedEmail)
+
 
 
 
@@ -170,10 +181,14 @@ export class AdminLoginComponent implements OnInit, AfterViewInit {
 
   }
 
+  forgotPass() {
+    this.forgot_pass = true;
+    this.dialogRef.open(ForgotPassComponent)
 
-
-  add_signup_field() {
-    this.show_signUp = !this.show_signUp;
 
   }
+
+
+
+
 }

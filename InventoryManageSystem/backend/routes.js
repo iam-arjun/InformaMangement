@@ -6,8 +6,10 @@ const router = express.Router()
 const UserInfo = require('./Model/userinfo')
 const AllempInfo = require('./Model/eachemployee')
 const AllleaveForm = require('./Model/Leaveform')
-const ChatUserForm  = require('./Model/chatLogin')
-const Cvfiles = require('./Model/fileurl')
+const UserLoginTime = require('./Model/officeLogindetails')
+const UserSalaryDetails = require('./Model/salarysheet')
+
+
 const jwt = require('jsonwebtoken')
 const secreat_key = "thisismysecreatkeyofofficeemployee"
 
@@ -25,7 +27,8 @@ router.post('/officeemp', async (req, res) => {
             name: req.body.name,
             password: req.body.password,
             profession: req.body.profession,
-            worktime:req.body.worktime
+            worktime:req.body.worktime,
+            PPURL:req.body.PPURL
          
 
         })
@@ -161,7 +164,9 @@ router.post('/', (req, res) => {
             joindate: req.body.joindate,
             expirydate: req.body.expirydate,
             profession: req.body.profession,
-            pp_url: req.body.pp_url
+            pp_url: req.body.pp_url,
+            workingdays:req.body.workingdays,
+            Finalpay:req.body.Finalpay
 
 
 
@@ -298,23 +303,22 @@ router.delete('/leaveform/:id', (req, res) => {
 //     })
 // })
 
+// Employee office time login and logout .................................................................................
 
-
-// recording the office data using post method
-router.post('/chatLogin', (req, res) => {
+router.post('/userloginTime', (req, res) => {
     try {
-        chatuser = new ChatUserForm({
-            email:req.body.email,
-            password:req.body.password
-           
-
-
+        Mylogintime = new UserLoginTime({
+            name:req.body.emp_name,
+            date:req.body.login_date,
+            login_time:req.body.login_time,
+            logout_time:req.body.logout_time,
+            day_attendance:req.body.day_attendance
 
         })
     } catch (error) {
         console.log(error)
     }
-    chatuser.save((err, doc) => {
+    Mylogintime.save((err, doc) => {
         if (err) {
             console.log(err)
         }
@@ -323,8 +327,10 @@ router.post('/chatLogin', (req, res) => {
         }
     })
 })
-router.get('/chatLogin', (req, res) => {
-    ChatUserForm.find((err, doc) => {
+
+
+router.get('/userloginTime', (req, res) => {
+    UserLoginTime.find((err, doc) => {
         if (err) {
             res.send(err)
         }
@@ -334,6 +340,94 @@ router.get('/chatLogin', (req, res) => {
     }
     )
 })
+
+
+
+router.post('/userSalarydetails', (req, res) => {
+    try {
+      UserSalary= new UserSalaryDetails({
+            name:req.body.name,
+            workDays:req.body.workDays,
+          
+           
+        })
+    } catch (error) {
+        console.log(error)
+    }
+    UserSalary.save((err, doc) => {
+        if (err) {
+            console.log(err)
+        }
+        else {
+            res.send(doc)
+        }
+    })
+})
+
+
+router.get('/userSalarydetails', (req, res) => {
+    UserSalaryDetails.find((err, doc) => {
+        if (err) {
+            res.send(err)
+        }
+        else {
+            res.send(doc)
+        }
+    }
+    )
+})
+
+
+
+router.put('/userSalarydetails/:id', (req, res) => {
+    if (object_id.isValid(req.params.id)) {
+
+        let usersal = {
+            name:req.body.name,
+            workDays:req.body.workDays,
+           
+
+
+        }
+
+
+        UserSalaryDetails.findByIdAndUpdate(req.params.id, { $set: usersal }, { new: true }, (err, doc) => {
+            if (err) {
+                res.send(err)
+
+            }
+            else {
+                res.send(doc)
+            }
+        })
+
+    }
+    else {
+        res.send('invalid id')
+
+    }
+})
+
+
+router.delete('/userSalarydetails/:id', (req, res) => {
+    if (object_id.isValid(req.params.id)) {
+        UserSalaryDetails.findByIdAndRemove(req.params.id, (err, doc) => {
+            if (err) {
+                res.send(err)
+
+            }
+            else {
+                res.send(doc)
+            }
+        })
+
+    }
+    else {
+        res.send('invalid id')
+
+    }
+})
+
 
 
 module.exports = router

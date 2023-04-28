@@ -2,7 +2,7 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angula
 import { MatDialog } from '@angular/material/dialog';
 import { MyserviceService } from 'src/app/Services/myservice.service';
 import { LeaveFormComponent } from '../../leave-form/leave-form.component';
-import { AttendanceModel } from 'src/app/admin-login/admindash/attendancesheet/attendance.model';
+;
 
 @Component({
   selector: 'app-myprofile',
@@ -21,6 +21,7 @@ export class MyprofileComponent implements OnInit, AfterViewInit {
   Emp_id = ""
   Emp_email = ""
   Emp_proff = ""
+  Emp_ppurl = ""
   PROFILE_ARRAY: any = []
   Attendace_array1: any = []
   login_credentials_array: any = []
@@ -38,9 +39,18 @@ export class MyprofileComponent implements OnInit, AfterViewInit {
 
 
   Newarray = []
+  loginObjData = {
+    emp_name: "",
+    login_date: "",
+    login_time: "",
+    logout_time: "",
+    day_attendance: ""
+
+  }
 
   constructor(private dialogRef: MatDialog, private _service: MyserviceService) {
     this.worktime = parseInt(sessionStorage.getItem('WORKTIME'))
+
 
   }
   ngAfterViewInit(): void {
@@ -50,12 +60,8 @@ export class MyprofileComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    let tempBool = Boolean(sessionStorage.getItem('disablelogin'))
-    if (tempBool) {
-      setInterval((): void => { this.disableLogin = true }, 0.00000000000001);
-    }
-
-
+    this.disableLogin = Boolean(sessionStorage.getItem('DISABLE_LOGIN'))
+    this.disableLogout = Boolean(sessionStorage.getItem('DISABLE_LOGOUT'))
 
     this.Attendace_array1 = JSON.parse(sessionStorage.getItem('attarr'))
     this.Newarray = JSON.parse(sessionStorage.getItem('Newarray'))
@@ -73,6 +79,8 @@ export class MyprofileComponent implements OnInit, AfterViewInit {
     this.Emp_id = sessionStorage.getItem('userid');
     this.Emp_email = sessionStorage.getItem('useremail');
     this.Emp_proff = sessionStorage.getItem('userproff')
+    this.Emp_ppurl = sessionStorage.getItem('PPURL')
+    console.log(this.Emp_ppurl)
     this.USER_LOGIN_TIME = sessionStorage.getItem('USER_LOGIN_TIME')
     if (this.USER_LOGIN_TIME) {
       this.SHOW_ATTEND = false;
@@ -105,14 +113,8 @@ export class MyprofileComponent implements OnInit, AfterViewInit {
       this.LOGINMESSAGE.nativeElement.value = ""
 
       this.disableLogin = true;
- 
-      sessionStorage.setItem('disablelogin', 'false')
-      setTimeout((): void => { sessionStorage.removeItem('disablelogin')}, 10000);
 
-
-
-
-
+      sessionStorage.setItem('DISABLE_LOGIN', String(this.disableLogin))
 
     }
 
@@ -120,15 +122,12 @@ export class MyprofileComponent implements OnInit, AfterViewInit {
 
 
   logoutTime(empName) {
-    // let getHour = 17
-    // let getMin = 5
 
-    if (this.LOGOUTMESSAGE.nativeElement.value) {
+    if (this.loginTime) {
       let getHour = new Date().getHours();
       let getMin = new Date().getMinutes()
       let currentDate = new Date().toLocaleDateString()
       console.log(currentDate)
-
 
       this.USER_LOGOUT_TIME = `${getHour}:${getMin}`
 
@@ -141,19 +140,24 @@ export class MyprofileComponent implements OnInit, AfterViewInit {
       console.log(totalHours)
       let actualAttendance = totalHours / this.worktime;
       console.log(actualAttendance)
+      this.loginObjData.emp_name = empName;
+      this.loginObjData.login_date = String(new Date());
+      this.loginObjData.login_time = this.USER_LOGIN_TIME;
+      this.loginObjData.logout_time = this.USER_LOGOUT_TIME;
+      this.loginObjData.day_attendance = String(actualAttendance);
+      console.log(this.loginObjData)
+      this._service.empLoginTime(this.loginObjData).subscribe(res => {
+        console.log(res)
+      },
+
+        err => {
+          console.log(err)
+        })
       sessionStorage.setItem('USER_LOGOUT_TIME', this.USER_LOGOUT_TIME)
-
-
-      if (actualAttendance) {
-        this.Newarray.push(empName, actualAttendance)
-        sessionStorage.setItem("Newarray", JSON.stringify(this.Newarray))
-
-
-      }
 
       this.LOGOUTMESSAGE.nativeElement.value = ""
       this.disableLogout = true;
-      setTimeout((): void => { this.disableLogout = false }, 10000);
+      sessionStorage.setItem('DISABLE_LOGOUT', String(this.disableLogout))
 
 
     }

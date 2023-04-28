@@ -1,0 +1,60 @@
+<section class="EMP_LOGIN_DETAILS">
+    <div class="main">
+        <div class="searchBox row mx-2 my-2">
+            <div class="col-md-10">
+                <form class="my-3">
+                    <div class="input-group">
+                        <input type="search" class="form-control px-3 py-3 rounded " [(ngModel)]="namesearch"
+                            placeholder="Search" [ngModelOptions]="{standalone: true}" aria-label="Search"
+                            aria-describedby="search-addon"
+                            style="margin-top:2rem;background-color: transparent;color:black" name="search" />
+
+                    </div>
+                </form>
+            </div>
+
+
+        </div>
+
+        <div class="row mx-2">
+            <div class="col-md-10 py-4 px-3" style="background-color: white;border:1px solid white;border-radius:5px;">
+                <table class="table ">
+                    <thead>
+                        <tr>
+                            <th scope="col">Sno</th>
+                            <th scope="col">Full Name</th>
+                            <th scope="col"> Date</th>
+                            <th scope="col">Login Time</th>
+                            <th scope="col">LogoutTime</th>
+
+
+                            <th scope="col">Expected ATT</th>
+                            <th scope="col">Actual ATT</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of emp_login_time_details |filterpipe7:namesearch;index as i">
+                            <th scope="row">{{i+1}}</th>
+                            <td>{{item.name}}</td>
+                            <td>{{item.date | date:'fullDate'}}</td>
+                            <td>{{item.login_time}}  </td>
+                            <td> {{item.logout_time}} </td>
+                            <td> 1</td>
+                            <td> {{item.day_attendance | slice :0:6}}</td>
+
+
+                        </tr>
+
+
+                    </tbody>
+                </table>
+
+
+            </div>
+        </div>
+
+
+
+
+    </div>
+</section>

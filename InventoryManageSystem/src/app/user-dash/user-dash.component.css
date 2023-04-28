@@ -11,39 +11,29 @@ span {
 
 .main {
 
-
-
-  
   width: 90vw;
   height: 100vh;
-
   background: #F0F0F0;
-
-
   backdrop-filter: blur(9.3px);
   -webkit-backdrop-filter: blur(9.3px);
   border: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: 'Montserrat', sans-serif;
 }
-
 
 aside {
 
   padding-top: 1rem;
-  color: #fff;
+
   width: 100%;
 
   height: 45vh;
-
-
-
-
 
 
 }
 
 aside a {
   font-size: 1rem;
-  color: #fff;
+  color: #000000;
   display: block;
   padding:0.5rem;
   text-decoration: none;
@@ -51,11 +41,11 @@ aside a {
 }
 
 aside a:hover {
-  color: #000000;
-  background: #fff;
+  color: #ffffff;
+  background-color: #000000;
   outline: none;
   position: relative;
-  background-color: #fff;
+
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
 }
@@ -64,15 +54,13 @@ aside a:hover {
 
 .left_side {
   border-right: 2px solid white;
-  ;
-
+  
 
 }
 
 a {
   cursor: pointer;
 }
-
 
 
 .emp_sidebar_menu {
@@ -82,7 +70,6 @@ a {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: start;
-
 
 }
 
@@ -102,6 +89,5 @@ a {
 .TOPBAR .header {
   font-size: 1.2rem;
   color: white;
-
 
 }

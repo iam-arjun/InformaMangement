@@ -1,0 +1,42 @@
+<div class="CV_DETAILS">
+    <div class="main card" style="width:30vw;height:89vh;background-color:#7e97c6;border-radius:0.3rem;border: none;outline: none;padding-top:0.5rem">
+
+  
+
+        <div class="card-body">
+            <h3 style="font-size:1.4rem;color:black;font-weight: 500; text-align: center; letter-spacing: 1px;">Salary Sheet</h3>
+            <div > 
+                <form [formGroup]="SALARY_FORM" (ngSubmit)="final_sal()" >
+                
+          
+                        <legend><span class="number">1</span> <b>{{SALARY_USER}}</b></legend>
+                        <label for="name">Employee Name</label>
+                        <input type="text" id="name" formControlName="name">
+                        
+                        <label for="total_att">Total Attendance Till Now</label>
+                        <input type="text" id="total_att" formControlName="total_att">
+                        
+                        <label for="mail">Salary rate(as per company)</label>
+                        <input type="text" id="mail" formControlName="sal_rate" >
+                        
+                        <label for="password">Actual Salary Calculated</label>
+                        <input type="text" id="password"  formControlName="final_amt">
+                        
+                    
+                     
+        
+                    <button type="submit" >Final Amount</button>
+                </form>
+
+            </div>
+
+
+
+        </div>
+
+        
+
+    </div>
+
+</div>
+

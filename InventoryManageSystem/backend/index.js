@@ -20,7 +20,12 @@ const baseurl = `http://localhost:${port}`
 const mongoose = require('mongoose')
 
 
-user_app.use(bodyParser.json())
+user_app.use(bodyParser.json({
+    verify: (req, res, buf) => {
+    req.rawBody = buf.toString()
+    },
+    limit: '50mb'
+    }))
 user_app.use(cors({origin:"*"}))
 
 user_app.use('/Allemp',routes)

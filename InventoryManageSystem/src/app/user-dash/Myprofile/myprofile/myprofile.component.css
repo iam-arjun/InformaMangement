@@ -64,7 +64,7 @@ html {
     border-bottom: 3px solid white;
     border-top-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
-   line-height: 3rem;
+   line-height: 2rem;
 }
 
 .loginUser h3 {
@@ -82,11 +82,11 @@ mat-input::placeholder {
     font-weight: 900;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 
 body {
     background-color: #E6EAF5;
-    font-family: 'Roboto', sans-serif;
+   
 }
 
 .card {

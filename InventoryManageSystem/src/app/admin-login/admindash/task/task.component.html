@@ -27,17 +27,17 @@
                         <th scope="col">Advance</th>
                         <th scope="col">Second Photo</th>
                         <th scope="col">Final</th>
-                        <th scope="col">Download CV</th>
+                     
                         <th scope="col">Remark</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let item of TASK_EMP_ARRAY |filterpipe4:nameSearch;index as i">
+                    <tr *ngFor=" let item of TASK_EMP_ARRAY |filterpipe4:nameSearch;index as i">
                         <th>{{prefixId}}{{i}}</th>
                         <td>{{item.name}}</td>
                         <td>
                             <div style="display: flex;justify-content: space-around;">
-                                <input class="form-control" type="file" (change)="onChange($event)" style="width:300px"
+                                <input class="form-control" type="file" (change)="onChange($event,item.name)" style="width:300px"
                                 >
                                 <button class="" mat-raised-button color="primary">
                                     <i class="bi bi-upload text-light" (click)="onUpload()"
@@ -58,11 +58,9 @@
                         </td>
                         <td>PHOTO2</td>
                         <td>5000</td>
-                        <td><button mat-raised-button color="primary"  class="px-2 py-1" >
-                                <a [href]="fileUrl" download="Download.txt"
-                                    style="color:white;text-decoration:none">Download &nbsp;</a><i
-                                    class="bi bi-download"></i></button></td>
-                        <td>Remarks</td>
+                        <!-- <td>  <span><button mat-raised-button color="warn"
+                            (click)="cleartask(i)">Clear</button></span></td> -->
+                      
                     </tr>
 
 

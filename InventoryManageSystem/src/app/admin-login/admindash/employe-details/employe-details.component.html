@@ -1,0 +1,53 @@
+<section class="EmpDetails">
+    <div class="searchBox mx-3 my-2">
+        <form class="my-3">
+            <div class="input-group" style="width:92%">
+                <input type="search" class="form-control px-3 py-3 rounded " [(ngModel)]="nameSearch"
+                    placeholder="Search" [ngModelOptions]="{standalone: true}" aria-label="Search"
+                    aria-describedby="search-addon" style="margin-top:2rem;background-color: transparent;color:black;"
+                    name="search" />
+
+            </div>
+        </form>
+        <table class="table ">
+            <thead>
+                <tr>
+                    <th scope="col">Sno</th>
+                    <th scope="col">Emp Name</th>
+             
+                    <th scope="col">See Biodata</th>
+                    <th scope="col">Download CV</th>
+                    <th scope="col">Salary Calculation</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of EMP_CV_DETIALS |filterpipe :nameSearch;index as i">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{item.name}}</td>
+           
+                    <td><button mat-raised-button color="primary"
+                            (click)="CreateCV(item.name,item.email,item.address,item.gPhone,item.empBank,item.accountNo,item.panNo,item.salary,item.joindate,item.leavedate,item.ppUrl)">Create
+                            CV</button></td>
+                    <td><button mat-raised-button color="primary" class="px-2 py-1">
+                            <a href={{item.file_url}} download="Download.txt"
+                                style="color:white;text-decoration:none">Download &nbsp;</a><i
+                                class="bi bi-download"></i></button></td>
+             
+
+                    <td><button mat-raised-button color="light"  (click)="CalculateSal(item.name)"> Calculate</button>
+                        
+                    </td>
+                </tr>
+
+
+            </tbody>
+        </table>
+
+
+
+
+    </div>
+
+
+</section>

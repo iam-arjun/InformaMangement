@@ -24,6 +24,10 @@ const UserSchema = mongoose.Schema({
         worktime:{
             type:Number
         },
+        PPURL:{
+            type:String
+        },
+      
       
 
       

@@ -1,0 +1,26 @@
+<form [formGroup]="forgotPass" (ngSubmit)="FORGOT_PASS()">
+    <div class="form-group" *ngIf="!PasswordResetSuccess">
+
+        <input type="email" class="form-control" placeholder="Enter email" formControlName="email" required>
+
+    </div>
+
+
+   
+
+    <button mat-raised-button color="primary" class="my-3" type="submit" *ngIf="!PasswordResetSuccess">Send verification
+        email</button>
+
+    <div class="alert alert-success" role="alert" *ngIf="PasswordResetSuccess">
+        Check your email to reset your password!
+    </div>
+
+    <button mat-raised-button color="warn" class="my-3 mx-2" (click)="close()"> Close</button>
+    <br>
+    <br>
+
+    <div class="spinner-border text-primary my-3" role="status"  style="margin-left: 7rem;"  *ngIf="SpinnerStatus">
+        <div class="visually-hidden">Loading...</div>
+    </div>
+
+</form>

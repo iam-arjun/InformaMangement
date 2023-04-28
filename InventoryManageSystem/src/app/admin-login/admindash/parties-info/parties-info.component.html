@@ -1,0 +1,271 @@
+<section class="parties_details">
+    <div class="main">
+
+        <div class="row main_part" style="padding-top:1rem;">
+            <div class="col-md-4 leftPart">
+                <div class="row innerleftpart">
+                    <div class="col-lg-6 search_btn">
+                        <input class="searchBtn" [(ngModel)]="nameSearch" [ngModelOptions]="{standalone: true}"
+                            placeholder="Filter employee">
+
+
+                    </div>
+                    <div class="col-lg-6 add_party">
+                        <button type="button" (click)="display()" class=" addparty_btn " style="font-size:0.8rem;">Add
+                            Employee</button>
+
+
+                    </div>
+                </div>
+                <div class="LEFT mt-4 ">
+                    <div class="accentBG" style=" width:100%;   height: 100%;">
+
+
+
+
+                        <div class="  row partiesDetails my-2 mx-2 "
+                            style="margin-top
+                        :0.5rem ;padding-left: 0.7rem;height:75vh; width:100%; background-color: white;border:2px solid white;border-radius: 0.5rem; overflow-y: scroll;overflow-x: hidden;"
+                            id="style-8">
+                            <div class="col-md-12  px-1 py-4 ">
+                                <table class="table  " style="border:none ;width: 100%;">
+                                    <th class="th_header">
+                                        Emp Id
+                                    </th>
+                                    <th class="th_header">
+                                        Emp Name
+                                    </th>
+                                    <th class="th_header">
+                                        Emp Prof
+
+                                    </th>
+                                    <th class="th_header">
+                                        Trash
+                                    </th>
+
+                                    <tbody class="px-2 mt-4">
+                                        <tr *ngFor="let item of Party_Array | filterpipe3:nameSearch;index as i" style="    border-bottom: 1px solid rgb(201, 220, 232);
+                                       ">
+                                            <th scope="row" style="color:#FFB100;">{{prefixId}}{{i}}</th>
+                                            <td>{{item.fullname}}</td>
+                                            <td>{{item.profession}}</td>
+
+                                            <!-- <td> <i class="bi bi-pencil"
+                                            (click)="updatePersonalEmp(item)"></i></td> -->
+                                            <td> <i class="bi bi-trash text-danger text-bold"
+                                                    (click)="DelEmp(item._id)"></i></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+            <div class="col-md-8 rightPart  px-3 "  >
+                <div class=" top_PartyDetails px-3 py-3"
+                    style="margin:0.5rem;height: 42%; width: 95%; border: 1px solid black;background-color: white; border-radius: 0.5rem;border:2px solid white;"  *ngIf="show_office_form">
+                    <form [formGroup]="officeEmp" (ngSubmit)="addOfficeEmp()">
+                        <div class="row">
+                            <div class="col">
+
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Choose Emp Id</mat-label>
+                                    <mat-select formControlName="empid">
+                                        <mat-option *ngFor="let item of Party_Array;index as i" class="text-dark"
+                                            [value]="item">
+                                            {{prefixId}}{{i}}
+
+                                        </mat-option>
+
+                                    </mat-select>
+                                </mat-form-field>
+
+
+                            </div>
+
+                            <div class="col">
+
+
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Office Email</mat-label>
+                                    <input matInput placeholder="Enter email" formControlName="email" required>
+
+
+
+                                </mat-form-field>
+
+                            </div>
+
+                            <div class="col">
+                                <mat-form-field appearance="outline">
+
+                                    <input matInput placeholder="Enter pm email" formControlName=""
+                                        value="@informatech.com" required [disabled]="true">
+
+
+                                </mat-form-field>
+
+                            </div>
+
+
+                        </div>
+                        <div class="row">
+                            <div class="col ">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Office Password</mat-label>
+                                    <input matInput [type]="hide ? 'password' : 'text'" value="innovate@143"
+                                        placeholder="Enter password" formControlName="password" required>
+                                    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' :
+                                        'visibility'}}</mat-icon>
+
+
+                                </mat-form-field>
+
+
+                            </div>
+                            <div class="col mx-2 ">
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Employee Name</mat-label>
+                                    <mat-select formControlName="name">
+                                        <mat-option *ngFor="let item of Party_Array;index as i" class="text-dark"
+                                            [value]="item.fullname">
+                                            {{item.fullname}}
+
+                                        </mat-option>
+
+                                    </mat-select>
+                                </mat-form-field>
+
+                            </div>
+                            <div class="col">
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Choose Profession</mat-label>
+                                    <mat-select formControlName="profession">
+                                        <mat-option *ngFor="let item of PROFESSION_ARRAY;index as i" class="text-dark"
+                                            [value]="item">
+                                            {{item}}
+
+                                        </mat-option>
+
+                                    </mat-select>
+                                </mat-form-field>
+
+
+                            </div>
+
+
+
+                        </div>
+                        <div class="row">
+
+                            <div class="col">
+
+
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Working Hours</mat-label>
+                                    <input matInput placeholder="Enter working time (in hours)"
+                                        formControlName="worktime" required>
+
+
+
+                                </mat-form-field>
+
+                            </div>
+                            <div class="col mx-2 ">
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Choose PP url</mat-label>
+                                    <mat-select formControlName="PPURL">
+                                        <mat-option *ngFor="let item of Party_Array;index as i" class="text-dark"
+                                            [value]="item.pp_url" >
+                                 <b style="color:blueviolet">{{i}}</b>{{item.pp_url?item.pp_url:"None Url"}}
+
+                                        </mat-option>
+
+                                    </mat-select>
+                                </mat-form-field>
+
+                            </div>
+
+                            <div class="col-md-2 pt-2 ">
+                                <div >
+                                    <button mat-raised-button type="submit" color="primary">Save</button>
+
+
+
+                                </div>
+                              
+                            </div>
+                            <div class="col-md-2 pt-2  ">
+                                <button mat-raised-button color="warn" (click)="hide_office_form()">Close</button>
+
+
+
+                            </div>
+                        </div>
+                    </form>
+
+
+
+
+                </div>
+
+                <div class="transactionDetails mt-3  ">
+                    <div class=" row transRow px-1 py-4"
+                        style="margin:0.5rem;padding:0.3rem;width: 92%;overflow-y: scroll;overflow-x: hidden; background-color: white; border-radius: 0.5rem;border:2px solid white; height: 40vh;">
+                        <table class="table office  " style="border:none ;">
+                            <th >
+                                Office Name
+                                
+                            </th>
+
+                            <th >
+                                Office Email
+                            </th>
+                            <th >
+                                Office Password
+
+                            </th>
+                            <th >
+                                Alter
+
+                            </th>
+                            <th>
+                                Trash
+
+                            </th>
+
+                            <tbody>
+                                <tr *ngFor="let item of OFFICE_EMP_ARRAY;index as i">
+                                    <td style="color:#FFB100;">{{item.name}}</td>
+                                    <td> {{item.email}}</td>
+
+                                    <td [innerText]="hidepass ? '*******' : 'text'">{{item.password}} </td>
+
+
+                                    <td> <i class="bi bi-pencil" (click)="
+                                    updateofficeEmp(item)"></i></td>
+                                    <td> <i class="bi bi-trash text-danger text-bold"
+                                            (click)="  deleteofficeEmp(item._id)"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</section>

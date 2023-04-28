@@ -2,22 +2,23 @@
     <div class="main ">
         <div class="row container" style="width:100%">
             <div class="col-md-2 left_side" style="background-color:#7e97c6;height: 100vh;">
-                <div class="logo" style="display: flex;justify-content: space-between;">
-                    <div class="Logo mb-5   " style="width: 11rem;height:3rem">
+                <div class="logo">
+                    <!-- <div class="Logo mb-5   " style="width: 11rem;height:3rem">
                         <img src="../../assets/img/Innovate.jpg" alt="Logo"
                             style="border:2px solid white;border-radius: 20rem; width: 45%;height:100%">
 
 
-                    </div>
-                    <div>
-                        <h3 style="font-size: 1.1rem;font-weight: 800;">
-                            Admin Name
-                        </h3>
+                    </div> -->
+                    <div style="display:flex;justify-content: space-around;align-items: center;">
+                        <i class="fa-solid fa-user-secret" style="color:rgb(255, 255, 255 );font-size:2.4rem;"></i>
+                        <span style="font-size: 1.1rem;font-weight: 800;color:black;">
+                            {{ADMIN_NAME}}
+                        </span>
                     </div>
 
 
                 </div>
-                <div class="" style="border:5px solid white;border-radius: 10px;"></div>
+                <div class="mt-3" style="border:5px solid white;border-radius: 10px;"></div>
 
 
 
@@ -44,17 +45,27 @@
                                 Update</a>
                             <a routerLink="/task" (click)="menu_display5()"><i class="fa-solid fa-list-check"
                                     style="color:#FFB100;"></i>&nbsp;&nbsp;Office Task</a>
-                            <a routerLink="/chat" (click)="menu_display6()" style="pointer-events: none;"><i class="fa-regular fa-message"
-                                    style="color:#FFB100; "></i>&nbsp;&nbsp;Chat Option</a>
-                            <!-- <a routerLink="/attendance" (click)="menu_display6()">Attendance Sheet</a> -->
+                            <a routerLink="/attendance" (click)="menu_display7()"><i class="fa-solid fa-list-check"
+                                    style="color:#FFB100;"></i>&nbsp;&nbsp;Attendance </a>
+                            <a routerLink="/salarysheet" (click)="menu_display8()"><i class="fa-solid fa-list-check"
+                                    style="color:#FFB100;"></i>&nbsp;&nbsp;Salary Sheet </a>
+                            <a routerLink="/salaryslip" (click)="menu_display6()"><i class="fa-solid fa-list-check"
+                                    style="color:#FFB100;"></i>&nbsp;&nbsp;Salary Slips </a>
+
+
+
+
                         </div>
 
 
 
                     </aside>
+
                 </div>
 
             </div>
+
+
             <div class="col-md-10 rightBg" style="background-color: rgba(247, 246, 250, 0.925); ;">
                 <div class="TOPBAR">
                     <div>
@@ -63,12 +74,19 @@
                                 the
                                 reserved one..</i></span>
                     </div>
+                    <div class="logoutadmin ">
+                        <button mat-raised-button class="mx-3" type="submit" color="primary" (click)="signup_admin()">
+                            <i class="fa-solid fa-user-plus"
+                                style="font-size: 1rem;color:rgb(255, 255, 255);cursor: pointer;font-weight: 900;"></i>
+                            Sign Up</button>
 
-                    <div class="logoutadmin">
-                        <i class="bi bi-box-arrow-right"
-                            style="font-size: 1.8rem;color:black;cursor: pointer;font-weight: 900;"
-                            (click)="logout_admin()"></i>
+                        <button mat-raised-button type="submit" color="warn" (click)="logout_admin()"><i
+                                class="bi bi-box-arrow-right"
+                                style="font-size: 1rem;color:rgb(255, 255, 255);cursor: pointer;font-weight: 900;"></i>
+                            Sign Out</button>
+
                     </div>
+
 
                 </div>
 
@@ -77,8 +95,11 @@
                 <app-leave-form-page *ngIf="show_emp_leave"> </app-leave-form-page>
                 <app-contract-details *ngIf="show_contract_update"></app-contract-details>
                 <app-task *ngIf="show_task"></app-task>
-                <app-chat-options *ngIf="show_attendace"></app-chat-options>
+                <!-- <app-chat-options ></app-chat-options> -->
+                <app-employee-login-time *ngIf="show_attendace"></app-employee-login-time>
                 <!-- <app-attendancesheet *ngIf="show_attendace"></app-attendancesheet> -->
+                <app-emp-salary-sheet *ngIf="show_salary_sheet"></app-emp-salary-sheet>
+                <app-salaryslip *ngIf="show_sal_slip"></app-salaryslip>
             </div>
 
         </div>

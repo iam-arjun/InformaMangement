@@ -1,27 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Suez+One&display=swap');
 
-*{
-    margin: 0;padding: 0;box-sizing: 0;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
 }
 
 
 
-.sidebar{
+.sidebar {
     width: 100%;
     height: 50%;
-  
+
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     color: white;
-  
+
     overflow: hidden;
     padding-left: 1.1rem;
 }
-.sidebar li{
-   
+
+.sidebar li {
+
     list-style: none;
 }
-.sidebar li a{
+
+.sidebar li a {
     text-decoration: none;
     color: white;
     font-size: 1rem;
@@ -30,6 +35,8 @@
 
 .main {
     scroll-behavior: smooth;
-    overflow-y:hidden;
-    overflow-x:hidden;
+    overflow-y: hidden;
+    overflow-x: hidden;
+
+  
 }

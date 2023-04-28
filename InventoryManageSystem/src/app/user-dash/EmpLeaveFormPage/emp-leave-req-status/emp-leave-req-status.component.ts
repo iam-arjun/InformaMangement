@@ -17,20 +17,30 @@ export class EmpLeaveReqStatusComponent implements OnInit {
   ngOnInit(): void {
     this._service.getLeave().subscribe(res => {
       let tempname = sessionStorage.getItem('username')
+      console.log(tempname)
+      console.log(typeof (tempname))
       let temparr: any = []
-      // temparr = res
-      // let tempobj = temparr.filter(ob => ob.name === tempname)
 
-      // this.leaveArray = tempobj
-      // console.log(this.leaveArray)
-      temparr = JSON.parse(localStorage.getItem('LeaveArr-0'))
+      temparr = JSON.parse(localStorage.getItem('LeaveApproval'))
       console.log(temparr)
-      let tempobj = temparr.filter(ob => ob.name === tempname)
-      let templeave = tempobj;
+      // let tempobj = temparr.filter(ob => ob.name === tempname)
+      // console.log(tempobj)
+      // this.leaveArray = tempobj
 
-      let set = new Set(templeave)
-      console.log(set)
-      this.leaveArray = [...set]
+
+      function eachLeave(element, index, array) {
+        console.log(tempname)
+        return (element.name===tempname);
+      }
+
+      // Driver code
+
+
+      // check for positive number 
+      let tempob = temparr.filter(eachLeave);
+      console.log(tempob);
+      this.leaveArray = tempob
+
       console.log(this.leaveArray)
 
 
@@ -50,7 +60,7 @@ export class EmpLeaveReqStatusComponent implements OnInit {
     console.log(i)
     if (confirm('It will delete your selected item.')) {
       let delIndex = i;
-      this.leaveArray.splice(delIndex,1)
+      this.leaveArray.splice(delIndex, 1)
 
 
       let temparr = JSON.parse(localStorage.getItem('LeaveArr-0'))
@@ -59,7 +69,7 @@ export class EmpLeaveReqStatusComponent implements OnInit {
       temparr.splice(temparr.indexOf(tempob), 1)
       console.log(temparr)
       localStorage.setItem('LeaveArr-0', JSON.stringify(temparr))
-   
+
 
     }
 

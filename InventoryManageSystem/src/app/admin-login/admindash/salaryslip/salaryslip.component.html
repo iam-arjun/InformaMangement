@@ -1,0 +1,68 @@
+<section class="SALARY_SLIP">
+    <div class="main">
+
+        <div class="input-group"  style="width:92%">
+            <input type="search" class="form-control px-3 py-3 rounded " [(ngModel)]="datesearch" placeholder="Search"
+                [ngModelOptions]="{standalone: true}" aria-label="Search" aria-describedby="search-addon"
+                style="margin-top:2rem;background-color: transparent;color:black" name="search" />
+
+        </div>
+
+<div class="card" style="overflow-x: scroll;overflow-y: scroll;height:74vh;width:92%">
+    <div class="card-body" >
+        <table class="table my-3 ">
+            <thead>
+                <tr>
+
+                    <th scope="col">Date</th>
+
+                    <th scope="col">Full Name</th>
+                    <th scope="col">Working Days(for a month)</th>
+                    <th scope="col">Salary</th>
+                    <th scope="col">Basic Salary</th>
+                    <th scope="col">Allowance</th>
+                    <th scope="col">Previous Dues</th>
+                    <th scope="col">Bonus</th>
+                    <th scope="col">Total Addition</th>
+                    <th scope="col">Tax</th>
+                    <th scope="col">Advance</th>
+                    <th scope="col">Net Salary</th>
+                    <th scope="col">Final Payment</th>
+
+                    <th scope="col">Remarks</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of SHOW_ALL_EMP_SAL|filterpipe6:datesearch;index as i ">
+                    <td>{{item.date | date:'fullDate'}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.workingdays}}</td>
+                    <td>{{item.salary}}</td>
+                    <td>{{item.basic_sal}}</td>
+                    <td>{{item.allowance}}</td>
+                    <td>{{item.dues}}</td>
+                    <td>{{item.bonus}}</td>
+                    <td>{{item.total_add}}</td>
+                    <td>{{item.tax}}</td>
+                    <td>{{item.advance}}</td>
+                    <td>{{item.netsal}}</td>
+                    <td>{{item.finalpay}}</td>
+                    <td>
+                        <button mat-raised-button color="warn"
+                                        (click)="clearSal(i)">Clear</button>
+                    </td>
+
+                </tr>
+
+
+
+            </tbody>
+        </table>
+
+
+    </div>
+</div>
+        
+    </div>
+</section>
